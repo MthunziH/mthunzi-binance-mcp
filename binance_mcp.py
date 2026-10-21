@@ -3,7 +3,7 @@ from typing import Any
 import requests
 from mcp.server.fastmcp import FastMCP
 
-mcp = FastMCP("Binance MCP", host=""0.0.0.0, port=8897)
+mcp = FastMCP("Binance MCP", host="0.0.0.0", port=8897)
 
 
 def get_symbol_from_name(name: str) -> str:
