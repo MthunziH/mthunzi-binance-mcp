@@ -17,7 +17,7 @@ def get_price(symbol: str) -> Any:
     Returns:
         Any: The current price of the crypto asset
     """
-    url = f"https://api.binance.com/api/v3/ticker/price?symbol={symbol}"
+    url = f"https://data-api.binance.vision/api/v3/ticker/price?symbol={symbol}"
     response = requests.get(url)
     response.raise_for_status()
     return response.json()
