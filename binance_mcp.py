@@ -6,15 +6,6 @@ from mcp.server.fastmcp import FastMCP
 mcp = FastMCP("Binance MCP", host="0.0.0.0", port=8897)
 
 
-def get_symbol_from_name(name: str) -> str:
-    if name.lower() in ["bitcoin", "btc"]:
-        return "BTCUSDT"
-    elif name.lower() in ["ethereum", "eth"]:
-        return "ETHUSDT"
-    else:
-        return name.upper()
-
-
 @mcp.tool()
 def get_price(symbol: str) -> Any:
     """
@@ -26,7 +17,6 @@ def get_price(symbol: str) -> Any:
     Returns:
         Any: The current price of the crypto asset
     """
-    symbol = get_symbol_from_name(symbol)
     url = f"https://api.binance.com/api/v3/ticker/price?symbol={symbol}"
     response = requests.get(url)
     response.raise_for_status()
@@ -44,7 +34,6 @@ def get_price_price_change(symbol: str) -> Any:
     Returns:
         Any: The price change of the crypto asset in the last 24 hours
     """
-    symbol = get_symbol_from_name(symbol)
     url = f"https://data-api.binance.vision/api/v3/ticker/24hr?symbol={symbol}"
     response = requests.get(url)
     response.raise_for_status()
